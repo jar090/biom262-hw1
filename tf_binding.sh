@@ -12,6 +12,7 @@ echo '--- Random 10 lines ---'
 awk -v seed=907 'BEGIN{srand(seed);}{ if (rand() < 0.5 ) {print $0}}'  tf.nfkb.bed | head
 echo '--- Last 10 lines ---'
 tail tf.nfkb.bed
+
 cat ~/code/biom262-2016/weeks/week01/data/gencode.v19.annotation.chr22.gtf | awk '{if ($3 == "transcript") print $0}' > gencode.v19.annotation.chr22.transcript.gtf
 wc -l gencode.v19.annotation.chr22.transcript.gtf
 echo '--- First 10 lines ---'
@@ -20,3 +21,12 @@ echo '--- Random 10 lines ---'
 awk -v seed=907 'BEGIN{srand(seed);}{ if (rand() < 0.5 ) {print $0}}'  gencode.v19.annotation.chr22.transcript.gtf | head
 echo '--- Last 10 lines ---'
 tail gencode.v19.annotation.chr22.transcript.gtf
+module load biotools
+bedtools flank -s -i ~/code/biom262-2016/weeks/week01/data/gencode.v19.annotation.chr22.transcript.gtf -g ~/code/biom262-2016/weeks/week01/data/hg19.genome -l 2000 -r 0 > gencode.v19.annotation.chr22.transcript.promoter.gtf
+wc -l gencode.v19.annotation.chr22.transcript.promoter.gtf
+echo '--- First 10 lines ---'
+head gencode.v19.annotation.chr22.transcript.promoter.gtf
+echo '--- Random 10 lines ---'
+awk -v seed=907 'BEGIN{srand(seed);}{ if (rand() < 0.5 ) {print $0}}' gencode.v19.annotation.chr22.transcript.promoter.gtf | head
+echo '--- Last 10 lines ---'
+tail gencode.v19.annotation.chr22.transcript.promoter.gtf
