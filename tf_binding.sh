@@ -53,3 +53,4 @@ echo '--- Last 10 lines ---'
 tail gencode.v19.annotation.chr22.transcript.promoter.nfkb.fasta
 
 echo "Hello I am a message in standard error (stderr)" >&2
+echo "Hello I am a message in standard out (stdout)"
